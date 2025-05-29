@@ -54,17 +54,17 @@ Logger Singleton
     }
 }
 
-// MARK: - Exemplos de Uso
+Exemplos de Uso
 
-// Uso em qualquer parte do app
+Uso em qualquer parte do app
 Logger.shared.log("Aplicação iniciada.")
 
-// Outro exemplo de uso
+Outro exemplo de uso
 let userName = "Alice"
 Logger.shared.log("Usuário '\(userName)' logado com sucesso.")
 
-// Tentativa de criar uma nova instância (resultará em erro de compilação, pois o init é privado)
-// let anotherLogger = Logger() // Erro: 'init()' is inaccessible due to 'private' protection level
+Tentativa de criar uma nova instância (resultará em erro de compilação, pois o init é privado)
+let anotherLogger = Logger() // Erro: 'init()' is inaccessible due to 'private' protection level
 Explicação da Implementação:
 
 static let shared = Logger(): Esta é a parte central da implementação do Singleton.
