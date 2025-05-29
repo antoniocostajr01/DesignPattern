@@ -4,6 +4,21 @@ Este repositório contém a implementação de um único padrão de projeto util
 🧩 Padrão(ões) Utilizado:
 1. Singleton
 
+🎯 Projeto simples: Sistema de Pedidos para Padaria
+Com dois acessos:
+
+Employee → registra pedidos.
+Manager → vê relatórios simples.
+⚙️ Funcionalidades básicas
+
+👨‍🍳 Employee
+Fazer novo pedido (nome do cliente + itens).
+Ver lista de pedidos do dia.
+👔 Manager
+Ver pedidos do dia.
+Ver total de vendas.
+
+
 Por que foi escolhido?
 O padrão Singleton foi escolhido por ser um dos mais fundamentais e amplamente utilizados no desenvolvimento iOS e Swift. Ele se encaixa perfeitamente em cenários onde é crucial ter uma única instância de uma classe para gerenciar um recurso compartilhado ou um estado global.
 
