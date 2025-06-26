@@ -28,3 +28,9 @@ class ManagerOrder {
         return orders.reduce(0.0) {$0 + $1.totalPrice}
     }
 }
+
+extension ManagerOrder {
+    func orderByClient(name: String) -> [Order] {
+        return orders.filter {$0.client.name.lowercased() == name.lowercased()}
+    }
+}

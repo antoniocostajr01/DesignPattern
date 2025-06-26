@@ -8,7 +8,7 @@
 import Foundation
 
 struct Order {
-    let client: String
+    let client: Client
     let itens: [String]
     let totalPrice: Double
 }

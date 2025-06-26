@@ -11,6 +11,10 @@ enum User {
     case Employee, Manager
 }
 
+struct Client {
+    let name: String
+    let id: UUID
+}
 
 //Singleton that manage the acess
 class System {
@@ -19,3 +23,5 @@ class System {
     
     var role: User?
 }
+
+

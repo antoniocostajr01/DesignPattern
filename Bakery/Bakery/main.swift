@@ -65,6 +65,7 @@ func managerMenu() {
         ==== Manager Menu ===
         1. Show Daily Order
         2. Show total Order Price
+        3. Show Client History
         0. Leave
         Choose your option: 
         """)
@@ -76,6 +77,8 @@ func managerMenu() {
             case "2":
                 let total = ManagerOrder.shared.calculateTotalOrders()
                 print("Total sales of the day: $\(String(format: "%.2f", total))")
+            case "3":
+                showClientHistory()
             case "0":
                 return
             default:
@@ -88,7 +91,8 @@ func managerMenu() {
 
 func makeOrder() {
     print("Costumer name: ")
-    let costumer = readLine() ?? "Costumer"
+    let name = readLine() ?? "Unknown"
+    let client = Client(name: name, id: UUID())
     
     print("Itens: ")
     let itens = readLine()?.components(separatedBy: ",") ?? []
@@ -96,9 +100,12 @@ func makeOrder() {
     print("Order value: ")
     let total = Double(readLine() ?? "") ?? 0.0
     
-    let order = Order(client: costumer, itens: itens, totalPrice: total)
+    let order = Order(client: client , itens: itens, totalPrice: total)
     ManagerOrder.shared.addOrder(order)
     print("Order registered!")
+    
+    let proxyHistory = ClientHistoryProxy(client: client)
+    proxyHistory.showHistory()
 }
 
 
@@ -114,6 +121,16 @@ func showOrder() {
             print("Total Price: $ \(String(format: "%.2f", order.totalPrice))")
         }
     }
+}
+
+func showClientHistory() {
+    print("Write the costumer name: ")
+    
+    let name = readLine() ?? "Unknown"
+    
+    let costumer = Client(name: name, id: UUID())
+    let history = ClientHistoryProxy(client: costumer)
+    history.showHistory()
 }
 
 showMenu()
