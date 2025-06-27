@@ -33,28 +33,23 @@ func showMenu() {
 }
 
 func employeeMenu() {
+    let invoker = MenuInvoker()
+    invoker.register(option: "1", command: MakeOrderCommand())
+    invoker.register(option: "2", command: ShowOrderCommand())
+    invoker.register(option: "0", command: ExitCommands())
+    
     while true {
         print("""
         ==== Employee Menu ====
         1. Make new order
         2. Show daily order
         0. Leave
-        
         Choose your option:
         """)
         
-        if let option = readLine() {
-            switch option {
-            case "1":
-                makeOrder()
-            case "2":
-                showOrder()
-            case "0":
-                return
-            default:
-                print("Invalid Option")
-            }
-        }
+        guard let option = readLine() else { continue }
+        if option == "0"{ break }
+        invoker.execute(option: option)
     }
 }
     
